@@ -2,7 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Index</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+
+      socket.on('connect', () => {
+        console.log('Connected to server');
+      });
+
+      socket.on('disconnect', () => {
+        console.log('Disconnected');
+      });
+
+    </script>
   </head>
   <body>
     <p>Welcome chatbot</p>
