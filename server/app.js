@@ -20,18 +20,16 @@ io.on('connection', (socket) => {
   //   text : 'hey! there'
   // });
 
-  socket.emit('newMessage',{
-    to : 'rajajaj',
-    text : 'ccscsc',
-    createdAt : 'csc'
-  });
-
   socket.on('disconnect',() => {
     console.log('User Disconnected');
   });
 
   socket.on('createMessage', (message) => {
-    console.log(`Message Received from ${message.from} with message : ${message.text} @ ${Date()}`);
+    io.emit('newMessage', {
+      from : message.from,
+      text : message.text,
+      createdAt : new Date().getTime()
+    });
   });
 
   // socket.on('createEmail', (email) => {
